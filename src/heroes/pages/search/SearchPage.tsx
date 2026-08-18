@@ -1,6 +1,7 @@
 import React from 'react'
 import {HeroStats} from "@/heroes/components/HeroStats.tsx";
 import {CustomJumboTron} from "@/components/custom/CustomJumboTron.tsx";
+import {SearchControls} from "@/heroes/pages/search/ui/SearchControls.tsx";
 
 export const SearchPage = () => {
     return (
@@ -14,6 +15,9 @@ export const SearchPage = () => {
 
             {/* Stats Dashboard */}
             <HeroStats></HeroStats>
+
+            {/*Filter and Search*/}
+            <SearchControls></SearchControls>
         </div>
 )
 }
