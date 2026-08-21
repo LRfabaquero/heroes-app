@@ -1,23 +1,9 @@
-import React, {type PropsWithChildren} from 'react'
+// import React, {type PropsWithChildren} from 'react'
 import {Card, CardContent, CardHeader} from "@/components/ui/card.tsx";
 import {Badge} from "@/components/ui/badge.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {Brain, Eye, Gauge, Heart, Shield, Zap} from "lucide-react";
 import {Progress} from "@/components/ui/progress.tsx";
-
-interface HeroGridCardProps  extends PropsWithChildren {
-    StatusIndicador: string,
-    UniverseBadge: string,
-    FavoriteButton: string,
-    ViewDetailsButton: string,
-    HeroName: string,
-    HeroClass: string,
-    Universe: string,
-    FirstAppearance: string,
-    Strength: string,
-    Intelligence: string,
-    Speed: string,
-}
 
 export const HeroGridCard = () => {
     return (

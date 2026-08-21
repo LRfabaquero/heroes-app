@@ -1,5 +1,5 @@
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card.tsx";
-import {Zap} from "lucide-react";
+// import {Zap} from "lucide-react";
 import type {PropsWithChildren} from "react";
 
 interface HeroStatCardProps  extends PropsWithChildren {
