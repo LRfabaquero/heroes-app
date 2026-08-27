@@ -1,6 +1,6 @@
 // import React from 'react'
 import {Button} from "@/components/ui/button.tsx";
-import {ChevronLeft, ChevronRight, MoreHorizontal} from "lucide-react";
+import {ChevronLeft, ChevronRight} from "lucide-react";
 
 interface Props {
     totalPages: number;
