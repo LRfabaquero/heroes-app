@@ -4,6 +4,7 @@ import {HeroStats} from "@/heroes/components/HeroStats.tsx";
 import {HeroGrid} from "@/heroes/pages/hero/HeroGrid.tsx";
 import {useState} from "react";
 import {CustomPagination} from "@/components/custom/CustomPagination.tsx";
+import {CustomBreadcrumbs} from "@/components/custom/CustomBreadcrumbs.tsx";
 
 export const HomePage = () => {
 
@@ -20,6 +21,8 @@ export const HomePage = () => {
                     description={"Descubre, explora y administra tu superheroe y villanos favoritos"}
                 >
                 </CustomJumboTron>
+                <CustomBreadcrumbs currentPage={"Super héroes"}></CustomBreadcrumbs>
+
 
                 {/* Stats Dashboard */}
                 <HeroStats></HeroStats>
