@@ -4,9 +4,9 @@ import {ChevronLeft, ChevronRight} from "lucide-react";
 
 interface Props {
     totalPages: number;
-    limit?: number;
-    currentPage: number;
-    onPageChange: (page: number) => void;
+    // limit?: number;
+    // currentPage: number;
+    // onPageChange: (page: number) => void;
 }
 
 export const CustomPagination = ({ totalPages }: Props) => {

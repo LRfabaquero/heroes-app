@@ -1,4 +1,3 @@
-// import React from 'react'
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -23,17 +22,17 @@ export const CustomBreadcrumbs = ({ currentPage, breadcrumb=[] }: Props) => {
         <Breadcrumb className="my-5">
             <BreadcrumbList>
                 <BreadcrumbItem>
-                    <BreadcrumbLink>
-                        <Link to={"/"}>Inicio</Link>
+                    <BreadcrumbLink render={<Link to={"/"} />}>
+                        Inicio
                     </BreadcrumbLink>
                 </BreadcrumbItem>
                 {
-                    breadcrumb?.map((crumb) =>(
-                        <div className={"flex items-center"}>
+                    breadcrumb?.map((crumb) => (
+                        <div key={crumb.to} className={"flex items-center"}>
+                            <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                                <BreadcrumbSeparator />
-                                <BreadcrumbLink>
-                                    <Link to={crumb.to}>{crumb.label}</Link>
+                                <BreadcrumbLink render={<Link to={crumb.to} />}>
+                                    {crumb.label}
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
                         </div>
