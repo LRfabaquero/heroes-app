@@ -5,12 +5,25 @@ import {HeroGrid} from "@/heroes/pages/hero/HeroGrid.tsx";
 import {useState} from "react";
 import {CustomPagination} from "@/components/custom/CustomPagination.tsx";
 import {CustomBreadcrumbs} from "@/components/custom/CustomBreadcrumbs.tsx";
+import {getHeroesByPageAction} from "@/heroes/actions/get-heroes-by-page.actions.ts";
+import {useQuery} from "@tanstack/react-query";
 
 export const HomePage = () => {
 
     const [activeTab, setActiveTab] = useState<
     'all'| 'favorites' | 'heroes' | 'villains'>('all')
 
+    const {data} = useQuery({
+        queryKey: ['heroes'],
+        queryFn: () => getHeroesByPageAction(),
+        staleTime: 1000 * 60 * 5 //5 minutos
+    })
+
+    // useEffect(() => {
+    //     getHeroesByPage().then(() => {
+    //
+    //     });
+    // }, []);
 
     return (
         <>
