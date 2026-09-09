@@ -13,19 +13,13 @@ export const HomePage = () => {
     const [activeTab, setActiveTab] = useState<
     'all'| 'favorites' | 'heroes' | 'villains'>('all')
 
-    const {data} = useQuery({
+    const {data: HeroesResponse} = useQuery({
         queryKey: ['heroes'],
         queryFn: () => getHeroesByPageAction(),
         staleTime: 1000 * 60 * 5 //5 minutos
     });
 
-    console.log({data});
-
-    // useEffect(() => {
-    //     getHeroesByPage().then(() => {
-    //
-    //     });
-    // }, []);
+    console.log({HeroesResponse});
 
     return (
         <>
@@ -56,24 +50,24 @@ export const HomePage = () => {
                     </TabsList>
                     <TabsContent value="all" >
                         <h1>Todos los personajes</h1>
-                        <HeroGrid></HeroGrid>
+                        <HeroGrid heroes={HeroesResponse?.heroes ?? [] }></HeroGrid>
                     </TabsContent>
                     <TabsContent value="favorites" >
                         <h1>Favoritos</h1>
-                        <HeroGrid></HeroGrid>
+                        <HeroGrid heroes={ [] }></HeroGrid>
                     </TabsContent>
                     <TabsContent value="heroes" >
                         <h1>Heroes</h1>
-                        <HeroGrid></HeroGrid>
+                        <HeroGrid heroes={ [] }></HeroGrid>
                     </TabsContent>
                     <TabsContent value="villains" >
                         <h1>Villanos</h1>
-                        <HeroGrid></HeroGrid>
+                        <HeroGrid heroes={ [] }></HeroGrid>
                     </TabsContent>
                 </Tabs>
 
                 {/* Character Grid */}
-                <HeroGrid></HeroGrid>
+                {/*<HeroGrid></HeroGrid>*/}
 
                 {/* Pagination */}
                 <CustomPagination totalPages={8}></CustomPagination>
