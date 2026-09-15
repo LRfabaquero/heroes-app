@@ -7,8 +7,11 @@ import {CustomPagination} from "@/components/custom/CustomPagination.tsx";
 import {CustomBreadcrumbs} from "@/components/custom/CustomBreadcrumbs.tsx";
 import {getHeroesByPageAction} from "@/heroes/actions/get-heroes-by-page.actions.ts";
 import {useQuery} from "@tanstack/react-query";
+import {useSearchParams} from "react-router";
 
 export const HomePage = () => {
+
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const [activeTab, setActiveTab] = useState<
     'all'| 'favorites' | 'heroes' | 'villains'>('all')
