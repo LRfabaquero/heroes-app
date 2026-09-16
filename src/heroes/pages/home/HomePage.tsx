@@ -12,8 +12,9 @@ import {useSearchParams} from "react-router";
 export const HomePage = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
-
     const activeTab = searchParams.get('tab') || 'all';
+    const page = searchParams.get('page') || '1';
+    const limit = searchParams.get('limit') || '6';
 
     const selectedTab = useMemo(() => {
         const validTab = ['all', 'favorites', 'heroes', 'villains'].includes(activeTab);
@@ -22,7 +23,7 @@ export const HomePage = () => {
 
     const {data: HeroesResponse} = useQuery({
         queryKey: ['heroes'],
-        queryFn: () => getHeroesByPageAction(),
+        queryFn: () => getHeroesByPageAction(Number(page), Number(limit)),
         staleTime: 1000 * 60 * 5 //5 minutos
     });
 
