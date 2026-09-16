@@ -2,7 +2,7 @@ import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs"
 import {CustomJumboTron} from "@/components/custom/CustomJumboTron.tsx";
 import {HeroStats} from "@/heroes/components/HeroStats.tsx";
 import {HeroGrid} from "@/heroes/pages/hero/HeroGrid.tsx";
-import {useMemo, useState} from "react";
+import {useMemo} from "react";
 import {CustomPagination} from "@/components/custom/CustomPagination.tsx";
 import {CustomBreadcrumbs} from "@/components/custom/CustomBreadcrumbs.tsx";
 import {getHeroesByPageAction} from "@/heroes/actions/get-heroes-by-page.actions.ts";
