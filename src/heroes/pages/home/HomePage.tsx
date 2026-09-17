@@ -8,6 +8,7 @@ import {CustomBreadcrumbs} from "@/components/custom/CustomBreadcrumbs.tsx";
 import {getHeroesByPageAction} from "@/heroes/actions/get-heroes-by-page.actions.ts";
 import {useQuery} from "@tanstack/react-query";
 import {useSearchParams} from "react-router";
+import {getSummaryAction} from "@/heroes/actions/get-summary.action.ts";
 
 export const HomePage = () => {
 
@@ -26,6 +27,12 @@ export const HomePage = () => {
         queryFn: () => getHeroesByPageAction(Number(page), Number(limit)),
         staleTime: 1000 * 60 * 5 //5 minutos
     });
+
+    const {data: summary} = useQuery({
+        queryKey: ["summary-information"],
+        queryFn: getSummaryAction,
+        staleTime: 1000 * 60 * 5 // 5min
+    })
 
     console.log({HeroesResponse});
 
@@ -50,7 +57,7 @@ export const HomePage = () => {
                         <TabsTrigger value="all" onClick={()=> setSearchParams((prev) =>{
                             prev.set('tab', 'all');
                             return prev;
-                        })}>All Characters (16)</TabsTrigger>
+                        })}>All Characters {summary?.totalHeroes}</TabsTrigger>
                         <TabsTrigger value="favorites" className="flex items-center gap-2"
                         onClick={()=> setSearchParams((prev) =>{
                             prev.set('tab', 'favorites');
@@ -62,11 +69,11 @@ export const HomePage = () => {
                         <TabsTrigger value="heroes" onClick={()=> setSearchParams((prev) =>{
                             prev.set('tab', 'heroes');
                             return prev;
-                        })}>Heroes (12)</TabsTrigger>
+                        })}>Heroes {summary?.heroCount}</TabsTrigger>
                         <TabsTrigger value="villains" onClick={()=> setSearchParams((prev) =>{
                             prev.set('tab', 'villains');
                             return prev;
-                        })}>Villains (2)</TabsTrigger>
+                        })}>Villains {summary?.villainCount}</TabsTrigger>
                     </TabsList>
                     <TabsContent value="all" >
                         <h1>Todos los personajes</h1>
