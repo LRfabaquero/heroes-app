@@ -22,7 +22,8 @@ export const HomePage = () => {
 
     const page = searchParams.get('page') || '1';
     const limit = searchParams.get('limit') || '6';
-    const {data: HeroesResponse} = usePaginatedHero(Number(page), Number(limit));
+    const category = searchParams.get('category') || 'all';
+    const {data: HeroesResponse} = usePaginatedHero(Number(page), Number(limit), category);
     const {data: summary} = useHeroSummary();
 
     console.log({HeroesResponse});
@@ -47,11 +48,13 @@ export const HomePage = () => {
                     <TabsList className="grid w-full grid-cols-4">
                         <TabsTrigger value="all" onClick={() => setSearchParams((prev) => {
                             prev.set('tab', 'all');
+                            prev.set('category', 'all');
+                            prev.set('page', '1');
                             return prev;
                         })}>All Characters ({summary?.totalHeroes})</TabsTrigger>
                         <TabsTrigger value="favorites" className="flex items-center gap-2"
                                      onClick={() => setSearchParams((prev) => {
-                                         prev.set('tab', 'favorites');
+                                        prev.set('tab', 'favorites');
                                          return prev;
                                      })}>
                             {/*<Heart className="h-4 w-4" />*/}
@@ -59,10 +62,14 @@ export const HomePage = () => {
                         </TabsTrigger>
                         <TabsTrigger value="heroes" onClick={() => setSearchParams((prev) => {
                             prev.set('tab', 'heroes');
+                            prev.set('category', 'hero');
+                            prev.set('page', '1');
                             return prev;
                         })}>Heroes ({summary?.heroCount})</TabsTrigger>
                         <TabsTrigger value="villains" onClick={() => setSearchParams((prev) => {
                             prev.set('tab', 'villains');
+                            prev.set('category', 'villain');
+                            prev.set('page', '1');
                             return prev;
                         })}>Villains ({summary?.villainCount})</TabsTrigger>
                     </TabsList>
@@ -76,11 +83,11 @@ export const HomePage = () => {
                     </TabsContent>
                     <TabsContent value="heroes">
                         <h1>Heroes</h1>
-                        <HeroGrid heroes={[]}></HeroGrid>
+                        <HeroGrid heroes={HeroesResponse?.heroes ?? []}></HeroGrid>
                     </TabsContent>
                     <TabsContent value="villains">
                         <h1>Villanos</h1>
-                        <HeroGrid heroes={[]}></HeroGrid>
+                        <HeroGrid heroes={HeroesResponse?.heroes ?? []}></HeroGrid>
                     </TabsContent>
                 </Tabs>
 
