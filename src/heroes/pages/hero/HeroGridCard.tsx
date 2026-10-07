@@ -6,6 +6,8 @@ import {Brain, Eye, Gauge, Heart, Shield, Zap} from "lucide-react";
 import {Progress} from "@/components/ui/progress.tsx";
 import type {Hero} from "@/heroes/types/hero.interface.ts";
 import {useNavigate} from "react-router";
+import {use} from "react";
+import {FavoriteHeroContext} from "@/heroes/context/FavoriteHeroContext.tsx";
 
 interface Props {
     hero: Hero
@@ -14,6 +16,8 @@ interface Props {
 export const HeroGridCard = ({hero}: Props) => {
 
     const navigate = useNavigate();
+
+    const {isFavorite, toogleFavorite} = use(FavoriteHeroContext);
 
     const handleClick = () => {
         //navigate(`/heroes/${hero.id}`);
@@ -45,8 +49,9 @@ export const HeroGridCard = ({hero}: Props) => {
                     <Badge className="absolute top-3 right-3 text-xs bg-blue-600 text-white">{hero.universe}</Badge>
 
                     {/* Favorite button */}
-                    <Button size="sm" variant="ghost" className="absolute bottom-3 right-3 bg-white/90 hover:bg-white">
-                        <Heart className="h-4 w-4 fill-red-500 text-red-500" />
+                    <Button size="sm" variant="ghost" className="absolute bottom-3 right-3 bg-white/90 hover:bg-white"
+                        onClick={()=>toogleFavorite(hero)}>
+                        <Heart className={`h-4 w-4 ${isFavorite(hero) ? "fill-red-500 text-red-500" : ""}`} />
                     </Button>
 
                     {/* View details button */}
