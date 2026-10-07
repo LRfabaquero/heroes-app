@@ -8,24 +8,6 @@ import {useQuery} from "@tanstack/react-query";
 import {getHeroAction} from "@/heroes/actions/get-hero.action.ts";
 // import Image from "next/image"
 
-const superheroData = {
-    id: "1",
-    name: "Clark Kent",
-    alias: "Superman",
-    powers: ["Súper fuerza", "Vuelo", "Visión de calor", "Visión de rayos X", "Invulnerabilidad", "Súper velocidad"],
-    description: "El Último Hijo de Krypton, protector de la Tierra y símbolo de esperanza para toda la humanidad.",
-    strength: 10,
-    intelligence: 8,
-    speed: 9,
-    durability: 10,
-    team: "Liga de la Justicia",
-    image: "/placeholder.svg?height=300&width=300",
-    firstAppearance: "1938",
-    status: "Activo",
-    category: "Héroe",
-    universe: "DC",
-}
-
 export const HeroPage = () => {
 
     const {idSlug = ''} =useParams();
@@ -34,7 +16,7 @@ export const HeroPage = () => {
         queryKey: ['heroes', idSlug],
         queryFn: () => getHeroAction(idSlug),
         retry: false
-    })
+    });
 
     if(isError){
         <Navigate to={'/'} />

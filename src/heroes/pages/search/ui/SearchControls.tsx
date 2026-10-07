@@ -33,7 +33,7 @@ export const SearchControls = () => {
                            className="pl-12 h-12 text-lg bg-white"
                            ref={inputRef}
                            onKeyDown={handleKeyDown}
-                           defaultValue={searchParams.get('name')}
+                           // defaultValue={searchParams.get('name')}
                     />
                 </div>
 
