@@ -16,7 +16,7 @@ export const useSearchHeroes = () => {
     return  useQuery({
         queryKey: ['search', {name, team, category, universe, status, strength}],
         queryFn: () => searchHeroesAction({name, team, category, universe, status, strength}),
-        staleTime: 1000 * 60 * 5, //5minutos
+        staleTime: 1000 * 60 * 5, // 5minutos
         retry: false
     });
 }
